@@ -50,9 +50,8 @@
                         <td>${b.id}</td>
                         <td>${b.brandName}</td>
                         <td>${b.branDesc}</td>
-                        <td><a href="addbrand">添加/</a><a href="dobrandupdate?id=${b.id}">修改/</a><a href="deletebrand?id=${b.id}">删除/</a></td>
-                            <%--<td>${b.createTime}</td>--%>
-                            <%--<td>${b.sets}</td>--%>
+                        <td><a href="addbrand">添加/</a><a href="brandupdate?id=${b.id}">修改/</a><a href="deletebrand?id=${b.id}">删除/</a></td>
+                                                          <%--这里brandupdate跳的DoBrandupdateServlet层标签再转发到jsp.接收页面--%>
                     </tr>
                 </c:forEach>
                 </tbody>

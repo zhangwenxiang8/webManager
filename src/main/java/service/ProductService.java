@@ -11,4 +11,5 @@ public interface ProductService {
     public int dl(int pid);
      Product getoness(int pid);
      int deletebrandId(Integer brandId);
+     List<Product> getResulet(String text);
 }

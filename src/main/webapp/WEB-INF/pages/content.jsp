@@ -20,12 +20,17 @@
     </style>
 </head>
 <body>
-<form action="content" method="get">
+
+
 <div id="contentWrap">
     <div class="pageTitle"></div>
     <div class="pageColumn">
         <div class="pageButton"></div>
-
+        <form  method="post">
+        <input type="text" name="text" placeholder="请输入查找内容..." >
+        <input type="submit" value="查询">
+        </form>
+        <form action="content" method="get">
         <table>
             <thead>
             <th width="25"><input name="" type="checkbox" value="" /></th>

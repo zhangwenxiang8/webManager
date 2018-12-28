@@ -39,12 +39,12 @@ public class IBrandDaoimpl implements BrandDao {
 
     @Override
     public int addBrand(Brand brand) {
-        return JdbcUtil.CUD("insert into brand(brandName,branDesc) values(?,?)",brand.getBrandName(),brand.getBranDesc());
+        return JdbcUtil.CUD("insert into brand(brand_name,brand_desc) values(?,?)",brand.getBrandName(),brand.getBranDesc());
     }
 
     @Override
     public int updateBrand(Brand brand) {
-        return JdbcUtil.CUD("update brand set id=?,brandName=?,branDesc=? where id=?",brand.getBrandName(),brand.getBranDesc(),brand.getId());
+        return JdbcUtil.CUD("update brand set brand_name=?,brand_desc=? where id=?",brand.getBrandName(),brand.getBranDesc(),brand.getId());
     }
 
     @Override
@@ -54,7 +54,7 @@ public class IBrandDaoimpl implements BrandDao {
 
     @Override
     public Brand getOneBrand(int id) {
-        return JdbcUtil.getone("select * from brand where", new Ronmap<Brand>() {
+        return JdbcUtil.getone("select * from brand where id=?", new Ronmap<Brand>() {
             @Override
             public Brand RowMapping(ResultSet rs) {
                 Brand brand=new Brand();

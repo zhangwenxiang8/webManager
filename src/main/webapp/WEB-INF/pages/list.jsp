@@ -46,6 +46,7 @@
                 <li class="subMenuTitle">标题标题标题</li>
                 <li class="subMenu"><a href="http://localhost:8080/webManager/content" target="right">商&nbsp&nbsp品</a>
                     <ul>
+                        <li><a href="http://localhost:8080/webManager/content" target="right">查找</a></li>
                         <li><a href="http://localhost:8080/webManager/add" target="right">添加</a></li>
                         <li><a href="http://localhost:8080/webManager/doupdate" target="right">修改</a></li>
                         <li><a href="http://localhost:8080/webManager/dodelete" target="right">删除</a></li>

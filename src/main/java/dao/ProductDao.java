@@ -12,4 +12,5 @@ public interface ProductDao {
     int delete(int pid);
     Product getones(int pid);
     int delte(Integer brandId);
+    public List<Product> getResults(String text);
 }

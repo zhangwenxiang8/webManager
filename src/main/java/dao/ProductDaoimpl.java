@@ -73,4 +73,27 @@ public class ProductDaoimpl implements ProductDao {
     public int delte(Integer brandId) {
         return JdbcUtil.CUD("delete from product where brandId=?",brandId);
     }
+
+    @Override
+    public List<Product> getResults(String text) {
+        return JdbcUtil.R("select * from product where product_name like concat('%',?,'%') ", new Ronmap<Product>() {
+            @Override
+            public Product RowMapping(ResultSet rs) {
+                Product product = new Product();
+                try {
+                    product.setPid(rs.getInt("product_id"));
+                    product.setProductName(rs.getString("product_name"));
+                    product.setPrice(rs.getDouble("price"));
+                    product.setProductDes(rs.getString("product_des"));
+                    product.setUrl(rs.getString("url"));
+                    product.setCount(rs.getInt("count"));
+                    product.setText(rs.getString("text"));
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                return product;
+            }
+        },text);
+    }
 }

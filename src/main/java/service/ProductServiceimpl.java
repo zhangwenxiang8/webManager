@@ -37,4 +37,9 @@ public class ProductServiceimpl  implements ProductService{
     public int deletebrandId(Integer brandId) {
         return productDao.delte(brandId);
     }
+
+    @Override
+    public List<Product> getResulet(String text) {
+        return productDao.getResults(text);
+    }
 }
