@@ -18,7 +18,7 @@
     姓名: <input type="text" name="name" value="${p.productName}"><br>
     价格: <input type="text" name="price" value="${p.price}"><br>
     描述:   <input type="text" name="des" value="${p.productDes}"><br>
-    图片:   <input type="text" name="url" value="${p.url}"><br>
+    图片:   <input type="file" name="url" value="${p.url}"><br>
     <input type="submit" value="提交">
 
 </form>

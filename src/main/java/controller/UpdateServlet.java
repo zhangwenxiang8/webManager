@@ -16,6 +16,7 @@ public class UpdateServlet extends HttpServlet{
         ProductService productService=new ProductServiceimpl();
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
       int pid =Integer.parseInt(req.getParameter("pid"));
         Product p=productService.getoness(pid);
             req.setAttribute("p",p);

@@ -3,6 +3,7 @@ package service;
 import dao.ProductDao;
 import dao.ProductDaoimpl;
 import pojo.Product;
+import pojo.ResultData;
 
 import java.util.List;
 
@@ -42,4 +43,19 @@ public class ProductServiceimpl  implements ProductService{
     public List<Product> getResulet(String text) {
         return productDao.getResults(text);
     }
+
+    @Override
+    public ResultData getLists(int pageNo, int pageSize, String text) {
+        ResultData data = new ResultData(pageNo,pageSize,productDao.getCount(text));
+        data.setLists(productDao.getLists(pageNo,pageSize,text));
+        return data;
+    }
+
+    @Override
+    public ResultData getLists(int pageNo, int pageSize) {
+        ResultData data = new ResultData(pageNo,pageSize,productDao.getCount());
+        data.setLists(productDao.getLists(pageNo,pageSize));
+        return data;
+    }
+
 }

@@ -1,6 +1,7 @@
 package service;
 
 import pojo.Product;
+import pojo.ResultData;
 
 import java.util.List;
 
@@ -12,4 +13,8 @@ public interface ProductService {
      Product getoness(int pid);
      int deletebrandId(Integer brandId);
      List<Product> getResulet(String text);
+
+    public ResultData getLists(int pageNo, int pageSize, String text);
+    public ResultData getLists(int pageNo, int pageSize);
+
 }

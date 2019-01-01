@@ -87,7 +87,6 @@ public class ProductDaoimpl implements ProductDao {
                     product.setProductDes(rs.getString("product_des"));
                     product.setUrl(rs.getString("url"));
                     product.setCount(rs.getInt("count"));
-                    product.setText(rs.getString("text"));
 
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -96,4 +95,59 @@ public class ProductDaoimpl implements ProductDao {
             }
         },text);
     }
+    @Override
+    public List<Product> getLists(int pageNo, int pageSize) {
+        return JdbcUtil.R("select * from product limit ?,?", new Ronmap<Product>() {
+            @Override
+            public Product RowMapping(ResultSet resultSet) {
+                Product p = new Product();
+                try {
+                    p.setPid(resultSet.getInt("product_id"));
+                    p.setPrice(resultSet.getDouble("price"));
+                    p.setProductDes(resultSet.getString("product_des"));
+                    p.setProductName(resultSet.getString("product_name"));
+                    p.setUrl(resultSet.getString("url"));
+                    p.setCount(resultSet.getInt("count"));
+                    p.setBrandId(resultSet.getInt("brand_id"));
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                return p;
+            }
+        }, (pageNo - 1) * pageSize, pageSize);
+    }
+
+    @Override
+    public List<Product> getLists(int pageNo, int pageSize, String text) {
+        return JdbcUtil.R("select * from product  where product_name like concat('%',?,'%') limit ?,?", new Ronmap<Product>() {
+            @Override
+            public Product RowMapping(ResultSet resultSet) {
+                Product p = new Product();
+                try {
+                    p.setPid(resultSet.getInt("product_id"));
+                    p.setUrl(resultSet.getString("url"));
+                    p.setPrice(resultSet.getDouble("price"));
+                    p.setProductDes(resultSet.getString("product_des"));
+                    p.setProductName(resultSet.getString("product_name"));
+                    p.setCount(resultSet.getInt("count"));
+                    p.setBrandId(resultSet.getInt("brand_id"));
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                return p;
+            }
+        }, text, (pageNo - 1) * pageSize, pageSize);
+    }
+
+
+    @Override
+    public int getCount() {
+        return JdbcUtil.executeCount("select count(*) from product",null);
+    }
+
+    @Override
+    public int getCount(String text) {
+        return JdbcUtil.executeCount("select count(*) from product where product_name like concat('%',?,'%') ",text);
+    }
+
 }

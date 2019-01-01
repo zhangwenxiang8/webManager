@@ -13,4 +13,9 @@ public interface ProductDao {
     Product getones(int pid);
     int delte(Integer brandId);
     public List<Product> getResults(String text);
+    public List<Product> getLists(int pageNo, int pageSize);
+    public List<Product> getLists(int pageNo, int pageSize, String text);
+    public int getCount();
+    public int getCount(String text);
+
 }

@@ -11,11 +11,11 @@
     <title>Title</title>
 </head>
 <body>
-<form action="addsbm" method="post">
+<form action="addsbm" method="post" enctype="multipart/form-data">
     姓名: <input type="text" name="name" value=""><br>
     价格: <input type="text" name="price" value=""><br>
     描述:   <input type="text" name="des" value=""><br>
-    图片:  <input type="text" name="url" value=""><br>
+    图片:  <input type="file" name="url" value=""><br>
     <input type="submit" value="添加">
 
 </form>

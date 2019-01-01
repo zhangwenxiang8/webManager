@@ -15,6 +15,7 @@ import java.util.List;
 public class Doupdate extends HttpServlet {
 
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         ProductService productlist=new ProductServiceimpl();
         List<Product> list = productlist.lists();
         req.setAttribute("list",list);

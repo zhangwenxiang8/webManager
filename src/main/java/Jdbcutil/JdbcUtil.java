@@ -123,5 +123,32 @@ public class JdbcUtil {
 
         return lists;
     }
+
+
+    public static <T> int executeCount(String sql, Object... objects){
+        int a = 0;
+        Connection conn = null;
+        PreparedStatement preparedStatement = null;
+        conn = getconn();
+
+        try {
+            preparedStatement = conn.prepareStatement(sql);
+
+            if (objects !=null){
+                for (int i = 0; i<objects.length;i++){
+                    preparedStatement.setObject(i+1,objects[i]);
+                }}
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                a=resultSet.getInt(1);
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return a;
+    }
 }
 
