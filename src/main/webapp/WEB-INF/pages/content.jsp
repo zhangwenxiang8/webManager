@@ -17,6 +17,19 @@
         body {
             background: #FFF
         }
+        from #viewzz{
+
+        }
+        .bean{
+            margin-top: 10px;
+            position: absolute;
+            left: 30%;
+        }
+        .bean li{
+            float: left;
+            margin-left:10px;
+        }
+
     </style>
 </head>
 <body>
@@ -42,7 +55,7 @@
 
                 </thead>
                 <tbody>
-                <c:forEach items="${list}" var="p">
+                <c:forEach items="${data.lists}" var="p">
                     <tr>
                         <td class="checkBox"><input name="" type="checkbox" value=""/></td>
                         <td>${p.pid}</td>
@@ -56,6 +69,11 @@
 
                 </tbody>
             </table>
+
+                <ul class="bean">
+                    ${data.pageView}
+                </ul>
+
         </form>
     </div>
 </div>

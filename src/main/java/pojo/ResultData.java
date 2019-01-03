@@ -16,11 +16,11 @@ public class ResultData {
         this.url=url;
         StringBuilder strb=new StringBuilder();
         if (pageNo==1){
-            strb.append("<li class='page'><a href='javascript:void(0)"+params+"' >首页</a></li>");
-            strb.append("<li class='page'><a href='javascript:void(0)"+params+"' >上一页</a></li>");
+            strb.append("<li class='pages'><a href='javascript:void(0)"+params+"' >首页</a></li>");
+            strb.append("<li class='pages'><a href='javascript:void(0)"+params+"' >上一页</a></li>");
         }else{
-            strb.append("<li class='page'><a href='"+url+"?pageNo=1"+params+"' >首页</a></li>");
-            strb.append("<li class='page'><a href='"+url+"?pageNo="+(pageNo-1)+""+params+"' >上一页</a></li>");
+            strb.append("<li class='pages'><a href='"+url+"?pageNo=1"+params+"' >首页</a></li>");
+            strb.append("<li class='pages'><a href='"+url+"?pageNo="+(pageNo-1)+""+params+"' >上一页</a></li>");
             }
 
 
@@ -51,20 +51,20 @@ public class ResultData {
                     }
                     for(int i =min;i<=max;i++){
                         if(i==pageNo){
-                            strb.append("<li>< a href=' "+params+"' >"+i+"</ a></li>");
+                            strb.append("<li><a href=' "+params+"' >"+i+"</a></li>");
                         }else{
-                            strb.append("<li>< a href='"+url+"?pageNo="+i+""+params+"'>"+i+"</ a></li>");
+                            strb.append("<li><a href='"+url+"?pageNo="+i+""+params+"'>"+i+"</a></li>");
                         }
                     }
                 }
 
 
         if(pageNo==maxPage){
-            strb.append("<li class='page'>< a href='javascript:void(0)"+params+"'>下一页</ a></li>");
-            strb.append("<li class='page'>< a href='javascript:void(0)"+params+"'>尾页</ a></li>");
+            strb.append("<li class='pages'><a href='javascript:void(0)"+params+"'>下一页</a></li>");
+            strb.append("<li class='pages'><a href='javascript:void(0)"+params+"'>尾页</a></li>");
         }else{
-            strb.append("<li class='page'>< a href='"+url+"?pageNo="+(pageNo+1)+""+params+"'>下一页</ a></li>");
-            strb.append("<li class='page'>< a href='"+url+"?pageNo="+(maxPage)+""+params+"'>尾页</ a></li>");
+            strb.append("<li class='pages'><a href='"+url+"?pageNo="+(pageNo+1)+""+params+"'>下一页</a></li>");
+            strb.append("<li class='pages'><a href='"+url+"?pageNo="+(maxPage)+""+params+"'>尾页</a></li>");
         }
         this.pageView=strb.toString();
     }

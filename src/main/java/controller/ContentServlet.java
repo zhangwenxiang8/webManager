@@ -1,17 +1,18 @@
 package controller;
 
+import Jdbcutil.CookiesUtil;
 import pojo.Brand;
 import pojo.Product;
 import pojo.ResultData;
+import pojo.User;
 import service.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet("/content")
 public class ContentServlet extends HttpServlet {
@@ -36,38 +37,51 @@ public class ContentServlet extends HttpServlet {
         resp.setHeader("content-type", "text/html;charset=UTF-8");
         String text = req.getParameter("text");
 
+
+        HttpSession session=req.getSession();
+        Cookie[] cookies= req.getCookies();
+        CookiesUtil.getCookie(cookies);
+        Map<String,Cookie>maps=CookiesUtil.getCookie(cookies);
+        Cookie cookie=maps.get("username");
+       /* String username=cookie.getValue();*/
+        User user=(User) session.getAttribute("user");
+
+
+
         if(text==""||text==null){
-            ResultData data  = productlist.lists(pageNo,pageSize);
-            data.setUrl("list","");
+            ResultData data  = productlist.getLists(pageNo,pageSize);
+            data.setUrl("content","");
             req.setAttribute("data",data);
             if (user==null){
-                User user1 = uservice.getUser(username);
-                session.setAttribute("user",user1);
-                req.getRequestDispatcher("WEB-INF/pages/list.jsp").forward(req,resp);
+/*                User user1 = userService.getonee(username);
+                session.setAttribute("user",user1);*/
+                req.getRequestDispatcher("WEB-INF/pages/content.jsp").forward(req,resp);
 
             }else {
-                req.getRequestDispatcher("WEB-INF/pages/list.jsp").forward(req,resp);
+                req.getRequestDispatcher("WEB-INF/pages/content.jsp").forward(req,resp);
             }
         }else{
-            ResultData data = iservice.getLists(pageNo,pageSize,text);
+            ResultData data = productlist.getLists(pageNo,pageSize,text);
             String params="&text="+text;
-            data.setUrl("list",params);
+            data.setUrl("content",params);
             req.setAttribute("text",text);
             req.setAttribute("data",data);
             if (user==null){
-                User user1 = uservice.getUser(username);
-                session.setAttribute("user",user1);
-                req.getRequestDispatcher("WEB-INF/pages/list.jsp").forward(req,resp);
+ /*               User user1 = userService.getonee(username);
+                session.setAttribute("user",user1);*/
+                req.getRequestDispatcher("WEB-INF/pages/content.jsp").forward(req,resp);
 
             }else {
-                req.getRequestDispatcher("WEB-INF/pages/list.jsp").forward(req,resp);
+                req.getRequestDispatcher("WEB-INF/pages/content.jsp").forward(req,resp);
             }
         }
 
-        List<Product> list = productlist.lists();
+       /* List<Product> list = productlist.lists();
         req.setAttribute("list",list);
-        req.getRequestDispatcher("WEB-INF/pages/content.jsp").forward(req,resp);
+        req.getRequestDispatcher("WEB-INF/pages/content.jsp").forward(req,resp);*/
     }
+}
+
 
 
 
@@ -91,6 +105,4 @@ public class ContentServlet extends HttpServlet {
 //            System.out.println(lists);
 //            req.setAttribute("list",lists);
 //            req.getRequestDispatcher("WEB-INF/pages/content.jsp").forward(req,resp);
-//       }
-    }
-}
+//
