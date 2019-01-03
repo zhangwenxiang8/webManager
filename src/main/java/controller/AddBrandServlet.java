@@ -19,7 +19,8 @@ public class AddBrandServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//          List<Brand> brandlists =brandService.brandlists();
+                        req.setCharacterEncoding("utf-8");
+        //          List<Brand> brandlists =brandService.brandlists();
 //            req.setAttribute("addlist",brandlists);
             req.getRequestDispatcher("WEB-INF/pages/addbrand.jsp").forward(req,resp);
     }

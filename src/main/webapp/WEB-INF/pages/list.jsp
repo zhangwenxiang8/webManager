@@ -59,11 +59,8 @@
                     </ul>
                 </li>
 
-                <li class="subMenu"><a href="" target="right">标题标题标题</a></li>
-                <li class="subMenu"><a href="" target="right">标题标题标题</a></li>
-                <li class="subMenu"><a href="" target="right">标题标题标题</a></li>
-                <li class="subMenu"><a href="" target="right">标题标题标题</a></li>
-                <li class="subMenu"><a href="" target="right">标题标题标题</a></li>
+                <li class="subMenu"><a href="" target="right">订&nbsp&nbsp单</a></li>
+
             </ul>
         </div>
         <div class="sidebar fleft"><div class="btn"></div></div>

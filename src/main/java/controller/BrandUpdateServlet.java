@@ -18,6 +18,7 @@ public class BrandUpdateServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         int id = Integer.parseInt(req.getParameter("id"));
         String name =req.getParameter("name");
         String des=req.getParameter("des");
